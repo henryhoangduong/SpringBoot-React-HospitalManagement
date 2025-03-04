@@ -1,5 +1,6 @@
 package com.hms.backend.entity;
 
+import com.hms.backend.dto.Roles;
 import com.hms.backend.dto.UserDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class User {
     @Column(unique = true )
     private String email;
     private String password;
-    private String role;
+    private Roles role;
 
     public UserDTO toDTO(){
         return new UserDTO(this.id,this.name,this.email,this.password,this.role);
