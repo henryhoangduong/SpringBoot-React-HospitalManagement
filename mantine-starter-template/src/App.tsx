@@ -50,7 +50,6 @@ const App = () => {
   return (
     <MantineProvider theme={theme}>
       <AppRoutes />
-      <div className="bg-red-500">hello</div>
     </MantineProvider>
   );
 };
