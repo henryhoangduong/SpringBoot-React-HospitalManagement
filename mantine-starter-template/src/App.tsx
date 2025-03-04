@@ -1,4 +1,4 @@
-import { Button, createTheme, Slider } from "@mantine/core";
+import { createTheme } from "@mantine/core";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
@@ -49,7 +49,8 @@ const App = () => {
   });
   return (
     <MantineProvider theme={theme}>
-      <AppRoutes/>
+      <AppRoutes />
+      <div className="bg-red-500">hello</div>
     </MantineProvider>
   );
 };

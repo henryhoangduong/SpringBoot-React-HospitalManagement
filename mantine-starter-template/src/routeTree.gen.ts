@@ -11,117 +11,28 @@
 // Import Routes
 
 import { Route as rootRoute } from "./routes/__root";
-import { Route as AuthImport } from "./routes/auth";
-import { Route as AppImport } from "./routes/app";
-import { Route as AuthVerifyOtpImport } from "./routes/auth/verify-otp";
-import { Route as AuthVerifyEmailImport } from "./routes/auth/verify-email";
-import { Route as AuthRegisterImport } from "./routes/auth/register";
-import { Route as AuthLoginImport } from "./routes/auth/login";
-import { Route as AuthForgotPasswordImport } from "./routes/auth/forgot-password";
-import { Route as AppSettingsImport } from "./routes/app/settings";
-import { Route as AppDashboardImport } from "./routes/app/dashboard";
+import { Route as AppRoutesImport } from "./routes/AppRoutes";
 
 // Create/Update Routes
 
-const AuthRoute = AuthImport.update({
-  path: "/auth",
+const AppRoutesRoute = AppRoutesImport.update({
+  path: "/AppRoutes",
   getParentRoute: () => rootRoute,
-} as any);
-
-const AppRoute = AppImport.update({
-  path: "/app",
-  getParentRoute: () => rootRoute,
-} as any);
-
-const AuthVerifyOtpRoute = AuthVerifyOtpImport.update({
-  path: "/verify-otp",
-  getParentRoute: () => AuthRoute,
-} as any);
-
-const AuthVerifyEmailRoute = AuthVerifyEmailImport.update({
-  path: "/verify-email",
-  getParentRoute: () => AuthRoute,
-} as any);
-
-const AuthRegisterRoute = AuthRegisterImport.update({
-  path: "/register",
-  getParentRoute: () => AuthRoute,
-} as any);
-
-const AuthLoginRoute = AuthLoginImport.update({
-  path: "/login",
-  getParentRoute: () => AuthRoute,
-} as any);
-
-const AuthForgotPasswordRoute = AuthForgotPasswordImport.update({
-  path: "/forgot-password",
-  getParentRoute: () => AuthRoute,
-} as any);
-
-const AppSettingsRoute = AppSettingsImport.update({
-  path: "/settings",
-  getParentRoute: () => AppRoute,
-} as any);
-
-const AppDashboardRoute = AppDashboardImport.update({
-  path: "/dashboard",
-  getParentRoute: () => AppRoute,
 } as any);
 
 // Populate the FileRoutesByPath interface
 
 declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    "/app": {
-      preLoaderRoute: typeof AppImport;
+    "/AppRoutes": {
+      preLoaderRoute: typeof AppRoutesImport;
       parentRoute: typeof rootRoute;
-    };
-    "/auth": {
-      preLoaderRoute: typeof AuthImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/app/dashboard": {
-      preLoaderRoute: typeof AppDashboardImport;
-      parentRoute: typeof AppImport;
-    };
-    "/app/settings": {
-      preLoaderRoute: typeof AppSettingsImport;
-      parentRoute: typeof AppImport;
-    };
-    "/auth/forgot-password": {
-      preLoaderRoute: typeof AuthForgotPasswordImport;
-      parentRoute: typeof AuthImport;
-    };
-    "/auth/login": {
-      preLoaderRoute: typeof AuthLoginImport;
-      parentRoute: typeof AuthImport;
-    };
-    "/auth/register": {
-      preLoaderRoute: typeof AuthRegisterImport;
-      parentRoute: typeof AuthImport;
-    };
-    "/auth/verify-email": {
-      preLoaderRoute: typeof AuthVerifyEmailImport;
-      parentRoute: typeof AuthImport;
-    };
-    "/auth/verify-otp": {
-      preLoaderRoute: typeof AuthVerifyOtpImport;
-      parentRoute: typeof AuthImport;
     };
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([
-  AppRoute.addChildren([AppDashboardRoute, AppSettingsRoute]),
-  AuthRoute.addChildren([
-    AuthForgotPasswordRoute,
-    AuthLoginRoute,
-    AuthRegisterRoute,
-    AuthVerifyEmailRoute,
-    AuthVerifyOtpRoute,
-  ]),
-]);
+export const routeTree = rootRoute.addChildren([AppRoutesRoute]);
 
 /* prettier-ignore-end */

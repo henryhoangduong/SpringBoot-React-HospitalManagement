@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import Header from "../components/Header/Header";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 const AppRoutes = () => {
   return (
-    <div>AppRoutes</div>
-  )
-}
+    <div className="flex">
+      <Sidebar />
+      <div className="w-full">
+        <Header />
+      </div>
+    </div>
+  );
+};
 
-export default AppRoutes
+export default AppRoutes;
