@@ -3,9 +3,14 @@ import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
 import "@mantine/nprogress/styles.css";
+import AppRoutes from "./Routes/AppRoutes";
 const App = () => {
   const theme = createTheme({
     focusRing: "never",
+    fontFamily: "Poppins, sans-serif",
+    headings: {
+      fontFamily: "Merriweather, serif",
+    },
     colors: {
       primary: [
         "#f1fcfa",
@@ -39,14 +44,12 @@ const App = () => {
     defaultGradient: {
       from: "primary.4",
       to: "primary.8",
-      deg:132
-    }
+      deg: 132,
+    },
   });
   return (
     <MantineProvider theme={theme}>
-      <Button  variant="filled">
-         Hello
-      </Button>
+      <AppRoutes/>
     </MantineProvider>
   );
 };
