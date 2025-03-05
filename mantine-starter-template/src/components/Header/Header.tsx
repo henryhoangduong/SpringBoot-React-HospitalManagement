@@ -18,7 +18,7 @@ const Header = () => {
         />
       </ActionIcon>
       <div className="flex gap-5 items-center">
-        <ActionIcon variant="transparent" aria-label="Settings" size={"lg "}>
+        <ActionIcon variant="transparent" aria-label="Settings" size={"lg  "}>
           <IconBellRinging
             size={"lg"}
             style={{ width: "90%", height: "90%" }}
